@@ -54,17 +54,22 @@
             this.questionDurationNumeric = new System.Windows.Forms.NumericUpDown();
             this.questionTimeLabel = new System.Windows.Forms.Label();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusValueLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.chatBGW = new System.ComponentModel.BackgroundWorker();
             this.readTimer = new System.Windows.Forms.Timer(this.components);
+            this.statusListBox = new System.Windows.Forms.ListBox();
+            this.advancedTab = new System.Windows.Forms.TabPage();
+            this.categoriesContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editQuestionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl.SuspendLayout();
             this.statisticPage.SuspendLayout();
             this.settingsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cooldownNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.questionDurationNumeric)).BeginInit();
-            this.statusStrip1.SuspendLayout();
+            this.statusStrip.SuspendLayout();
+            this.categoriesContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // categoriesLabel
@@ -84,6 +89,7 @@
             this.categoriesListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.categoriesListBox.Size = new System.Drawing.Size(180, 69);
             this.categoriesListBox.TabIndex = 1;
+            this.categoriesListBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.categoriesListBox_MouseDown);
             // 
             // tabControl
             // 
@@ -92,6 +98,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl.Controls.Add(this.statisticPage);
             this.tabControl.Controls.Add(this.settingsTabPage);
+            this.tabControl.Controls.Add(this.advancedTab);
             this.tabControl.Location = new System.Drawing.Point(12, 12);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -233,6 +240,11 @@
             this.cooldownNumeric.Size = new System.Drawing.Size(52, 20);
             this.cooldownNumeric.TabIndex = 11;
             this.toolTip.SetToolTip(this.cooldownNumeric, "Time between a question finishing/being answer before asking a new question");
+            this.cooldownNumeric.Value = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
             // 
             // cooldownLabel
             // 
@@ -308,16 +320,17 @@
             this.questionTimeLabel.TabIndex = 2;
             this.questionTimeLabel.Text = "Question Time:";
             // 
-            // statusStrip1
+            // statusStrip
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel,
             this.statusValueLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 502);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(328, 22);
-            this.statusStrip1.TabIndex = 2;
-            this.statusStrip1.Text = "statusStrip1";
+            this.statusStrip.Location = new System.Drawing.Point(0, 502);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(328, 22);
+            this.statusStrip.SizingGrip = false;
+            this.statusStrip.TabIndex = 2;
+            this.statusStrip.Text = "statusStrip1";
             // 
             // statusLabel
             // 
@@ -327,8 +340,11 @@
             // 
             // statusValueLabel
             // 
+            this.statusValueLabel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.statusValueLabel.Name = "statusValueLabel";
-            this.statusValueLabel.Size = new System.Drawing.Size(0, 17);
+            this.statusValueLabel.Size = new System.Drawing.Size(18, 17);
+            this.statusValueLabel.Text = "@";
+            this.statusValueLabel.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             // 
             // chatBGW
             // 
@@ -338,13 +354,49 @@
             // 
             this.readTimer.Tick += new System.EventHandler(this.readTimer_Tick);
             // 
+            // statusListBox
+            // 
+            this.statusListBox.BackColor = System.Drawing.SystemColors.Control;
+            this.statusListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.statusListBox.FormattingEnabled = true;
+            this.statusListBox.Location = new System.Drawing.Point(0, 412);
+            this.statusListBox.Name = "statusListBox";
+            this.statusListBox.Size = new System.Drawing.Size(328, 91);
+            this.statusListBox.TabIndex = 13;
+            this.statusListBox.TabStop = false;
+            this.statusListBox.Visible = false;
+            // 
+            // advancedTab
+            // 
+            this.advancedTab.Location = new System.Drawing.Point(4, 22);
+            this.advancedTab.Name = "advancedTab";
+            this.advancedTab.Padding = new System.Windows.Forms.Padding(3);
+            this.advancedTab.Size = new System.Drawing.Size(296, 461);
+            this.advancedTab.TabIndex = 2;
+            this.advancedTab.Text = "Advanced";
+            this.advancedTab.UseVisualStyleBackColor = true;
+            // 
+            // categoriesContextMenu
+            // 
+            this.categoriesContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editQuestionsToolStripMenuItem});
+            this.categoriesContextMenu.Name = "categoriesContextMenu";
+            this.categoriesContextMenu.Size = new System.Drawing.Size(151, 26);
+            // 
+            // editQuestionsToolStripMenuItem
+            // 
+            this.editQuestionsToolStripMenuItem.Name = "editQuestionsToolStripMenuItem";
+            this.editQuestionsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.editQuestionsToolStripMenuItem.Text = "Edit Questions";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(328, 524);
-            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.tabControl);
+            this.Controls.Add(this.statusListBox);
             this.Name = "MainForm";
             this.Text = "Gumshoe Trivia";
             this.tabControl.ResumeLayout(false);
@@ -354,8 +406,9 @@
             this.settingsTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cooldownNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.questionDurationNumeric)).EndInit();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
+            this.categoriesContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -379,7 +432,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown cooldownNumeric;
         private System.Windows.Forms.Label cooldownLabel;
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel statusLabel;
         private System.Windows.Forms.ToolStripStatusLabel statusValueLabel;
         private System.Windows.Forms.LinkLabel resetLabel;
@@ -393,6 +446,10 @@
         private System.Windows.Forms.ListView statisticsListView;
         private System.ComponentModel.BackgroundWorker chatBGW;
         private System.Windows.Forms.Timer readTimer;
+        private System.Windows.Forms.ListBox statusListBox;
+        private System.Windows.Forms.TabPage advancedTab;
+        private System.Windows.Forms.ContextMenuStrip categoriesContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem editQuestionsToolStripMenuItem;
     }
 }
 
