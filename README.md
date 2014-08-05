@@ -1,4 +1,5 @@
-gumshoe-trivia
+Gumshoe Trivia - Path of exile Trivia Bot
 ==============
 
-Gumshoe Trivia
+C#, 4.5 .NET Framework, SQLite
+
