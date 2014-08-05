@@ -53,6 +53,7 @@
             this.secondsLabel = new System.Windows.Forms.Label();
             this.questionDurationNumeric = new System.Windows.Forms.NumericUpDown();
             this.questionTimeLabel = new System.Windows.Forms.Label();
+            this.advancedTab = new System.Windows.Forms.TabPage();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -60,7 +61,6 @@
             this.chatBGW = new System.ComponentModel.BackgroundWorker();
             this.readTimer = new System.Windows.Forms.Timer(this.components);
             this.statusListBox = new System.Windows.Forms.ListBox();
-            this.advancedTab = new System.Windows.Forms.TabPage();
             this.categoriesContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editQuestionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl.SuspendLayout();
@@ -320,6 +320,16 @@
             this.questionTimeLabel.TabIndex = 2;
             this.questionTimeLabel.Text = "Question Time:";
             // 
+            // advancedTab
+            // 
+            this.advancedTab.Location = new System.Drawing.Point(4, 22);
+            this.advancedTab.Name = "advancedTab";
+            this.advancedTab.Padding = new System.Windows.Forms.Padding(3);
+            this.advancedTab.Size = new System.Drawing.Size(296, 461);
+            this.advancedTab.TabIndex = 2;
+            this.advancedTab.Text = "Advanced";
+            this.advancedTab.UseVisualStyleBackColor = true;
+            // 
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -366,16 +376,6 @@
             this.statusListBox.TabStop = false;
             this.statusListBox.Visible = false;
             // 
-            // advancedTab
-            // 
-            this.advancedTab.Location = new System.Drawing.Point(4, 22);
-            this.advancedTab.Name = "advancedTab";
-            this.advancedTab.Padding = new System.Windows.Forms.Padding(3);
-            this.advancedTab.Size = new System.Drawing.Size(296, 461);
-            this.advancedTab.TabIndex = 2;
-            this.advancedTab.Text = "Advanced";
-            this.advancedTab.UseVisualStyleBackColor = true;
-            // 
             // categoriesContextMenu
             // 
             this.categoriesContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -386,8 +386,9 @@
             // editQuestionsToolStripMenuItem
             // 
             this.editQuestionsToolStripMenuItem.Name = "editQuestionsToolStripMenuItem";
-            this.editQuestionsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.editQuestionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.editQuestionsToolStripMenuItem.Text = "Edit Questions";
+            this.editQuestionsToolStripMenuItem.Click += new System.EventHandler(this.editQuestionsToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -417,7 +418,6 @@
         #endregion
 
         private System.Windows.Forms.Label categoriesLabel;
-        private System.Windows.Forms.ListBox categoriesListBox;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage statisticPage;
         private System.Windows.Forms.TabPage settingsTabPage;
@@ -450,6 +450,7 @@
         private System.Windows.Forms.TabPage advancedTab;
         private System.Windows.Forms.ContextMenuStrip categoriesContextMenu;
         private System.Windows.Forms.ToolStripMenuItem editQuestionsToolStripMenuItem;
+        public System.Windows.Forms.ListBox categoriesListBox;
     }
 }
 

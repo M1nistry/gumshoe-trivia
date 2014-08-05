@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Data.SQLite;
 using System.Linq;
-using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace POETrivia
 {
     class SQLite
     {
-        private string _connection;
+        private readonly string _connection;
 
         public SQLite()
         {
@@ -68,7 +69,7 @@ namespace POETrivia
             values = values.Substring(0, values.Length - 1);
             try
             {
-                ExecuteNonQuery(String.Format("INSERT INTO {0}({1}) VALUESs({2});", tableName, columns, values));
+                ExecuteNonQuery(String.Format("INSERT INTO {0}({1}) VALUES({2});", tableName, columns, values));
             }
             catch (Exception fail)
             {
@@ -157,11 +158,121 @@ namespace POETrivia
                         {
                             categoryList.Add(rdr.GetString(1));
                         }
+                        cnn.Close();
                     }
                 }
             }
             return categoryList;
         }
+
+        /// <summary> Registers a new user in the database with either their provided pin or a random one </summary>
+        /// <param name="account">Account name to register</param>
+        /// <param name="pin">Pin to login with</param>
+        /// <returns>Sucess</returns>
+        public bool RegisterAccount(string account, int pin = 0)
+        {
+            using (var cnn = new SQLiteConnection(_connection))
+            {
+                var registerCommand = String.Format("INSERT INTO Users (user_account, user_pin) VALUES (@account, @pin);");
+                cnn.Open();
+                using (var cmd = new SQLiteCommand(registerCommand, cnn))
+                {
+                    cmd.Parameters.AddWithValue("@account", account);
+                    cmd.Parameters.AddWithValue("@pin", pin);
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                        cnn.Close();
+                        return true;
+                    }
+                    catch (SQLiteException ex)
+                    {
+                        Console.WriteLine(ex);
+                        return false;
+                    }
+                }
+            }
+        }
+
+        public int RetrieveId(string account)
+        {
+            using (var cnn = new SQLiteConnection(_connection))
+            {
+                cnn.Open();
+                using (var cmd = new SQLiteCommand(cnn))
+                {
+                    cmd.CommandText = String.Format("SELECT `user_id` FROM Users WHERE user_account='{0}';", account);
+                    try
+                    {
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read()) return reader.GetInt32(0);
+                        }
+                    }
+                    catch (SQLiteException ex)
+                    {
+                        return -1;
+                    }
+                }
+            }
+            return -1;
+        }
+
+        public int RetrievePin(int userId)
+        {
+            using (var cnn = new SQLiteConnection(_connection))
+            {
+                cnn.Open();
+                using (var cmd = new SQLiteCommand(cnn))
+                {
+                    cmd.CommandText = String.Format("SELECT `user_pin` FROM Users WHERE user_id='{0}';", userId);
+                    try
+                    {
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read()) return reader.GetInt32(0);
+                        }
+                    }
+                    catch (SQLiteException ex)
+                    {
+                        return -1;
+                    }
+                }
+            }
+            return -1;
+        }
+
+        public bool CharacterExists(int userId, string character)
+        {
+            var characterList = new List<string>();
+            using (var cnn = new SQLiteConnection(_connection))
+            {
+                cnn.Open();
+                using (var cmd = new SQLiteCommand(cnn))
+                {
+                    cmd.CommandText = String.Format("SELECT `character_name` FROM Characters WHERE character_user_id='{0}';", userId);
+                    try
+                    {
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read()) characterList.Add(reader.GetString(0));
+                        }
+                        if (characterList.Contains(character)) return false;
+                        Insert("Characters", new Dictionary<string, string>
+                        {
+                            { "character_name", character },
+                            { "character_user_id", userId.ToString()}
+                        });
+                        return true;
+                    }
+                    catch (SQLiteException ex)
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+        
         #endregion
 
         public string _ConString(SQLiteConnectionStringBuilder ConString)
