@@ -386,7 +386,7 @@
             // editQuestionsToolStripMenuItem
             // 
             this.editQuestionsToolStripMenuItem.Name = "editQuestionsToolStripMenuItem";
-            this.editQuestionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.editQuestionsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.editQuestionsToolStripMenuItem.Text = "Edit Questions";
             this.editQuestionsToolStripMenuItem.Click += new System.EventHandler(this.editQuestionsToolStripMenuItem_Click);
             // 
