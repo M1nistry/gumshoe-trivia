@@ -61,7 +61,7 @@
             // 
             this.searchLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.searchLabel.AutoSize = true;
-            this.searchLabel.Location = new System.Drawing.Point(416, 12);
+            this.searchLabel.Location = new System.Drawing.Point(413, 12);
             this.searchLabel.Name = "searchLabel";
             this.searchLabel.Size = new System.Drawing.Size(44, 13);
             this.searchLabel.TabIndex = 2;
@@ -70,7 +70,7 @@
             // searchTextBox
             // 
             this.searchTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchTextBox.Location = new System.Drawing.Point(466, 9);
+            this.searchTextBox.Location = new System.Drawing.Point(463, 9);
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.Size = new System.Drawing.Size(158, 20);
             this.searchTextBox.TabIndex = 3;
@@ -79,7 +79,7 @@
             // 
             this.resetLink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.resetLink.AutoSize = true;
-            this.resetLink.Location = new System.Drawing.Point(630, 12);
+            this.resetLink.Location = new System.Drawing.Point(627, 12);
             this.resetLink.Name = "resetLink";
             this.resetLink.Size = new System.Drawing.Size(35, 13);
             this.resetLink.TabIndex = 4;

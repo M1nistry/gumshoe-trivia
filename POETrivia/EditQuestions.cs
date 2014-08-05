@@ -11,5 +11,10 @@ namespace POETrivia
             _main = MainForm.GetSingleton();
             categoryComboBox.DataSource = _main.categoriesListBox.DataSource;
         }
+
+        private void PopulateQuestions()
+        {
+
+        }
     }
 }
