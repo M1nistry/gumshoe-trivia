@@ -140,12 +140,17 @@ namespace POETrivia
         #endregion
 
         #region Custom SQL Methods
-        public List<string> QueryCategories()
+
+        public DataTable QueryQuestions(string category)
         {
-            var categoryList = new List<string>();
+            return null;
+        }
+        public Dictionary<string, int> QueryCategories()
+        {
+            var categoryList = new Dictionary<string, int>();
             using (var cnn = new SQLiteConnection(_connection))
             {
-                const string queryCategories = @"SELECT category_id, category_name FROM Categories;";
+                const string queryCategories = @"SELECT category_name, category_id FROM Categories;";
                 cnn.Open();
                 using (var cmd = new SQLiteCommand(queryCategories, cnn))
                 {
@@ -153,7 +158,7 @@ namespace POETrivia
                     {
                         while (rdr.Read())
                         {
-                            categoryList.Add(rdr.GetString(1));
+                            categoryList.Add(rdr.GetString(0), rdr.GetInt32(1));
                         }
                         cnn.Close();
                     }

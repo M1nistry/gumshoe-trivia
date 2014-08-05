@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -17,12 +18,14 @@ namespace POETrivia
         private readonly SQLite _sqLite = new SQLite();
         private static MainForm _mainForm;
         private EditQuestions _editQuestions;
+        public Dictionary<string, int> _categories = new Dictionary<string, int>();
         public MainForm()
         {
             InitializeComponent();
             readTimer.Start();
             _mainForm = this;
-            categoriesListBox.DataSource = _sqLite.QueryCategories();
+            _categories = _sqLite.QueryCategories();
+            categoriesListBox.DataSource = _categories.Keys;
         }
 
         #region Custom Methods
