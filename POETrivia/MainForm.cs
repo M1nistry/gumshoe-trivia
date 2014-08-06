@@ -15,7 +15,7 @@ namespace POETrivia
         [DllImport("user32.dll")]
         static extern bool SetForegroundWindow(IntPtr hWnd);
 
-        private readonly SQLite _sqLite = new SQLite();
+        public readonly SQLite _sqLite = new SQLite();
         private static MainForm _mainForm;
         private EditQuestions _editQuestions;
         public Dictionary<string, int> _categories = new Dictionary<string, int>();
@@ -25,7 +25,7 @@ namespace POETrivia
             readTimer.Start();
             _mainForm = this;
             _categories = _sqLite.QueryCategories();
-            categoriesListBox.DataSource = _categories.Keys;
+            categoriesListBox.DataSource = _categories.Keys.ToList();
         }
 
         #region Custom Methods
@@ -161,7 +161,7 @@ namespace POETrivia
 
         private void categoriesListBox_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right) categoriesContextMenu.Show(MousePosition.X, MousePosition.Y);
+            categoriesListBox.SelectedIndex = categoriesListBox.IndexFromPoint(e.X, e.Y);
         }
 
         private void editQuestionsToolStripMenuItem_Click(object sender, EventArgs e)

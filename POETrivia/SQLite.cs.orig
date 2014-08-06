@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
+=======
 using System.Data;
+>>>>>>> a89647de1053216a3b2b3d753d7f37a44ccdbe36
 using System.Data.SQLite;
 using System.Linq;
 
 namespace POETrivia
 {
-    public class SQLite
+    class SQLite
     {
         private readonly string _connection;
 
@@ -142,61 +145,9 @@ namespace POETrivia
 
         #region Custom SQL Methods
 
-        public DataTable QueryQuestions(int categoryId)
+        public DataTable QueryQuestions(string category)
         {
-            var questionTable = new DataTable();
-            questionTable.Columns.Add("question_id");
-            questionTable.Columns.Add("question_question");
-            questionTable.Columns.Add("question_difficulty");
-            using (var cnn = new SQLiteConnection(_connection))
-            {
-                const string queryQuestions = @"SELECT question_id, question_question, question_difficulty FROM Questions WHERE question_id=@id;";
-                cnn.Open();
-                using (var cmd = new SQLiteCommand(queryQuestions, cnn))
-                {
-                    cmd.Parameters.AddWithValue("@id", categoryId);
-                    using (var rdr = cmd.ExecuteReader())
-                    {
-                        while (rdr.Read())
-                        {
-                            questionTable.Rows.Add(rdr.GetInt32(0), rdr.GetString(1), rdr.GetInt32(2));
-                        }
-                    }
-                }
-            }
-            return questionTable;
-        }
-
-        public List<String> QueryAnswers(int questionId)
-        {
-            var answerList = new List<string>();
-            using (var cnn = new SQLiteConnection(_connection))
-            {
-                const string queryAnswers = @"SELECT answer_value FROM Answers WHERE answers_question_id=@id;";
-                cnn.Open();
-                using (var cmd = new SQLiteCommand(queryAnswers, cnn))
-                {
-                    cmd.Parameters.AddWithValue("@id", questionId);
-                    using (var rdr = cmd.ExecuteReader())
-                    {
-                        while (rdr.Read())
-                        {
-                            answerList.Add(rdr.GetString(0));
-                        }
-                    }
-                }
-            }
-            return answerList;
-        }
-
-        public bool UpdateAnswer(string answer, string before, int questionId)
-        {
-            using (var cnn = new SQLiteConnection(_connection))
-            {
-                const string updateAnswer =
-                    @"UPDATE Answers SET answer_value=@answer WHERE answer_question_id=@id AND answer_value=@before;";
-            }
-            return true;
+            return null;
         }
         public Dictionary<string, int> QueryCategories()
         {

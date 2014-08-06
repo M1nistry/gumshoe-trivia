@@ -83,6 +83,7 @@
             // 
             // categoriesListBox
             // 
+            this.categoriesListBox.ContextMenuStrip = this.categoriesContextMenu;
             this.categoriesListBox.FormattingEnabled = true;
             this.categoriesListBox.Location = new System.Drawing.Point(103, 6);
             this.categoriesListBox.Name = "categoriesListBox";
