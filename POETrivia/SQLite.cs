@@ -150,7 +150,7 @@ namespace POETrivia
             questionTable.Columns.Add("question_difficulty");
             using (var cnn = new SQLiteConnection(_connection))
             {
-                const string queryQuestions = @"SELECT question_id, question_question, question_difficulty FROM Questions WHERE question_id=@id;";
+                const string queryQuestions = @"SELECT question_id, question_question, question_difficulty FROM Questions WHERE question_category_id=@id;";
                 cnn.Open();
                 using (var cmd = new SQLiteCommand(queryQuestions, cnn))
                 {
@@ -196,7 +196,7 @@ namespace POETrivia
                 const string updateAnswer =
                     @"UPDATE Answers SET answer_value=@answer WHERE answer_question_id=@id AND answer_value=@before;";
             }
-            return true;
+            return true; 
         }
         public Dictionary<string, int> QueryCategories()
         {

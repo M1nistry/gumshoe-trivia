@@ -49,9 +49,10 @@ namespace POETrivia
             UpdateAnswer();
         }
 
-        private bool UpdateAnswer()
+        private void UpdateAnswer()
         {
-            return true;
+            answerListBox.Items.Clear();
+            PopulateAnswers();
         }
 
         private void editToolStripMenuItem_Click(object sender, System.EventArgs e)
@@ -69,8 +70,5 @@ namespace POETrivia
         {
             answerListBox.SelectedIndex = answerListBox.IndexFromPoint(e.X, e.Y);
         }
-
-
-
     }
 }

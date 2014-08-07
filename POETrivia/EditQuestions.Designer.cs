@@ -112,6 +112,7 @@
             this.questionsDGV.Location = new System.Drawing.Point(12, 33);
             this.questionsDGV.MultiSelect = false;
             this.questionsDGV.Name = "questionsDGV";
+            this.questionsDGV.ReadOnly = true;
             this.questionsDGV.RowHeadersVisible = false;
             this.questionsDGV.RowHeadersWidth = 24;
             this.questionsDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
