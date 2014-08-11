@@ -35,18 +35,19 @@
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.resetLink = new System.Windows.Forms.LinkLabel();
             this.questionsDGV = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.answerListBox = new System.Windows.Forms.ListBox();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Question = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Difficulty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.answerListBox = new System.Windows.Forms.ListBox();
             this.answersContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addAnswerTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.applyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.questionsDGV)).BeginInit();
             this.answersContextMenu.SuspendLayout();
             this.SuspendLayout();
@@ -120,6 +121,32 @@
             this.questionsDGV.TabIndex = 5;
             this.questionsDGV.SelectionChanged += new System.EventHandler(this.questionsDGV_SelectionChanged);
             // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "question_id";
+            this.ID.HeaderText = "ID";
+            this.ID.MaxInputLength = 50;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
+            // Question
+            // 
+            this.Question.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Question.DataPropertyName = "question_question";
+            this.Question.HeaderText = "Question";
+            this.Question.MaxInputLength = 150;
+            this.Question.Name = "Question";
+            this.Question.ReadOnly = true;
+            // 
+            // Difficulty
+            // 
+            this.Difficulty.DataPropertyName = "question_difficulty";
+            this.Difficulty.HeaderText = "Difficulty";
+            this.Difficulty.MaxInputLength = 50;
+            this.Difficulty.Name = "Difficulty";
+            this.Difficulty.ReadOnly = true;
+            // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -153,33 +180,10 @@
             this.answerListBox.TabIndex = 8;
             this.answerListBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.answerListBox_MouseDown);
             // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "question_id";
-            this.ID.HeaderText = "ID";
-            this.ID.MaxInputLength = 50;
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            // 
-            // Question
-            // 
-            this.Question.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Question.DataPropertyName = "question_question";
-            this.Question.HeaderText = "Question";
-            this.Question.MaxInputLength = 150;
-            this.Question.Name = "Question";
-            // 
-            // Difficulty
-            // 
-            this.Difficulty.DataPropertyName = "question_difficulty";
-            this.Difficulty.HeaderText = "Difficulty";
-            this.Difficulty.MaxInputLength = 50;
-            this.Difficulty.Name = "Difficulty";
-            // 
             // answersContextMenu
             // 
             this.answersContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addToolStripMenuItem,
+            this.addToolStripMenuItem1,
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.answersContextMenu.Name = "answersContextMenu";
@@ -189,23 +193,14 @@
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(82, 22);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
-            // 
-            // addToolStripMenuItem
-            // 
-            this.addToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addAnswerTextBox,
-            this.applyToolStripMenuItem});
-            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.addToolStripMenuItem.Text = "Add";
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(82, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -221,6 +216,21 @@
             this.applyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.applyToolStripMenuItem.Text = "Apply";
             this.applyToolStripMenuItem.Click += new System.EventHandler(this.applyToolStripMenuItem_Click);
+            // 
+            // addToolStripMenuItem
+            // 
+            this.addToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addAnswerTextBox,
+            this.applyToolStripMenuItem});
+            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.addToolStripMenuItem.Text = "Add";
+            // 
+            // addToolStripMenuItem1
+            // 
+            this.addToolStripMenuItem1.Name = "addToolStripMenuItem1";
+            this.addToolStripMenuItem1.Size = new System.Drawing.Size(82, 22);
+            this.addToolStripMenuItem1.Text = "Add";
             // 
             // EditQuestions
             // 
@@ -260,10 +270,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Question;
         private System.Windows.Forms.DataGridViewTextBoxColumn Difficulty;
         private System.Windows.Forms.ContextMenuStrip answersContextMenu;
-        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
-        private System.Windows.Forms.ToolStripTextBox addAnswerTextBox;
-        private System.Windows.Forms.ToolStripMenuItem applyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripTextBox addAnswerTextBox;
+        private System.Windows.Forms.ToolStripMenuItem applyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
     }
 }

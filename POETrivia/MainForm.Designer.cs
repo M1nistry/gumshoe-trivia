@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.categoriesLabel = new System.Windows.Forms.Label();
             this.categoriesListBox = new System.Windows.Forms.ListBox();
+            this.categoriesContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editQuestionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.statisticPage = new System.Windows.Forms.TabPage();
             this.resetLabel = new System.Windows.Forms.LinkLabel();
@@ -61,15 +63,19 @@
             this.chatBGW = new System.ComponentModel.BackgroundWorker();
             this.readTimer = new System.Windows.Forms.Timer(this.components);
             this.statusListBox = new System.Windows.Forms.ListBox();
-            this.categoriesContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.editQuestionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.guildRadioButton = new System.Windows.Forms.RadioButton();
+            this.generalRadioButton = new System.Windows.Forms.RadioButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.categoriesContextMenu.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.statisticPage.SuspendLayout();
             this.settingsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cooldownNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.questionDurationNumeric)).BeginInit();
             this.statusStrip.SuspendLayout();
-            this.categoriesContextMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // categoriesLabel
@@ -91,6 +97,20 @@
             this.categoriesListBox.Size = new System.Drawing.Size(180, 69);
             this.categoriesListBox.TabIndex = 1;
             this.categoriesListBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.categoriesListBox_MouseDown);
+            // 
+            // categoriesContextMenu
+            // 
+            this.categoriesContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editQuestionsToolStripMenuItem});
+            this.categoriesContextMenu.Name = "categoriesContextMenu";
+            this.categoriesContextMenu.Size = new System.Drawing.Size(151, 26);
+            // 
+            // editQuestionsToolStripMenuItem
+            // 
+            this.editQuestionsToolStripMenuItem.Name = "editQuestionsToolStripMenuItem";
+            this.editQuestionsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.editQuestionsToolStripMenuItem.Text = "Edit Questions";
+            this.editQuestionsToolStripMenuItem.Click += new System.EventHandler(this.editQuestionsToolStripMenuItem_Click);
             // 
             // tabControl
             // 
@@ -205,6 +225,11 @@
             // 
             // settingsTabPage
             // 
+            this.settingsTabPage.Controls.Add(this.label3);
+            this.settingsTabPage.Controls.Add(this.numericUpDown1);
+            this.settingsTabPage.Controls.Add(this.label2);
+            this.settingsTabPage.Controls.Add(this.generalRadioButton);
+            this.settingsTabPage.Controls.Add(this.guildRadioButton);
             this.settingsTabPage.Controls.Add(this.label1);
             this.settingsTabPage.Controls.Add(this.cooldownNumeric);
             this.settingsTabPage.Controls.Add(this.cooldownLabel);
@@ -377,19 +402,54 @@
             this.statusListBox.TabStop = false;
             this.statusListBox.Visible = false;
             // 
-            // categoriesContextMenu
+            // guildRadioButton
             // 
-            this.categoriesContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editQuestionsToolStripMenuItem});
-            this.categoriesContextMenu.Name = "categoriesContextMenu";
-            this.categoriesContextMenu.Size = new System.Drawing.Size(151, 26);
+            this.guildRadioButton.AutoSize = true;
+            this.guildRadioButton.Location = new System.Drawing.Point(102, 163);
+            this.guildRadioButton.Name = "guildRadioButton";
+            this.guildRadioButton.Size = new System.Drawing.Size(49, 17);
+            this.guildRadioButton.TabIndex = 13;
+            this.guildRadioButton.Text = "Guild";
+            this.guildRadioButton.UseVisualStyleBackColor = true;
             // 
-            // editQuestionsToolStripMenuItem
+            // generalRadioButton
             // 
-            this.editQuestionsToolStripMenuItem.Name = "editQuestionsToolStripMenuItem";
-            this.editQuestionsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.editQuestionsToolStripMenuItem.Text = "Edit Questions";
-            this.editQuestionsToolStripMenuItem.Click += new System.EventHandler(this.editQuestionsToolStripMenuItem_Click);
+            this.generalRadioButton.AutoSize = true;
+            this.generalRadioButton.Checked = true;
+            this.generalRadioButton.Location = new System.Drawing.Point(102, 186);
+            this.generalRadioButton.Name = "generalRadioButton";
+            this.generalRadioButton.Size = new System.Drawing.Size(62, 17);
+            this.generalRadioButton.TabIndex = 14;
+            this.generalRadioButton.TabStop = true;
+            this.generalRadioButton.Text = "General";
+            this.generalRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 165);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 13);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Send to:";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Enabled = false;
+            this.numericUpDown1.Location = new System.Drawing.Point(153, 209);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDown1.TabIndex = 16;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Enabled = false;
+            this.label3.Location = new System.Drawing.Point(102, 211);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 13);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Channel:";
             // 
             // MainForm
             // 
@@ -401,6 +461,7 @@
             this.Controls.Add(this.statusListBox);
             this.Name = "MainForm";
             this.Text = "Gumshoe Trivia";
+            this.categoriesContextMenu.ResumeLayout(false);
             this.tabControl.ResumeLayout(false);
             this.statisticPage.ResumeLayout(false);
             this.statisticPage.PerformLayout();
@@ -410,7 +471,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.questionDurationNumeric)).EndInit();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
-            this.categoriesContextMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -452,6 +513,11 @@
         private System.Windows.Forms.ContextMenuStrip categoriesContextMenu;
         private System.Windows.Forms.ToolStripMenuItem editQuestionsToolStripMenuItem;
         public System.Windows.Forms.ListBox categoriesListBox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.RadioButton generalRadioButton;
+        private System.Windows.Forms.RadioButton guildRadioButton;
     }
 }
 
